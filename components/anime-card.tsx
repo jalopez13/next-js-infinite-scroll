@@ -1,4 +1,7 @@
-import Image from "next/image";
+import Image from 'next/image';
+
+import MotionDiv from './motion-div';
+import Link from 'next/link';
 
 export interface AnimeProp {
   id: string;
@@ -12,30 +15,45 @@ export interface AnimeProp {
   score: string;
 }
 
-interface Prop {
-  anime: AnimeProp;
+type PropsType = {
+  data: AnimeProp;
   index: number;
-}
+};
 
-function AnimeCard({ anime }: Prop) {
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+const AnimeCard = ({ data, index }: PropsType) => {
   return (
-    <div className="max-w-sm rounded relative w-full">
+    <MotionDiv
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      transition={{ delay: index * 0.25, ease: 'easeInOut', duration: 0.5 }}
+      viewport={{ amount: 0 }}
+      className="max-w-sm rounded relative w-full"
+    >
       <div className="relative w-full h-[37vh]">
-        <Image
-          src={anime.image.original}
-          alt={anime.name}
-          fill
-          className="rounded-xl"
-        />
+        <Link href={`/anime/${data.id}`}>
+          <Image
+            src={`https://shikimori.one${data.image.original}`}
+            alt={data.name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="rounded-xl"
+          />
+        </Link>
       </div>
       <div className="py-4 flex flex-col gap-3">
         <div className="flex justify-between items-center gap-1">
           <h2 className="font-bold text-white text-xl line-clamp-1 w-full">
-            {anime.name}
+            {data.name}
           </h2>
           <div className="py-1 px-2 bg-[#161921] rounded-sm">
             <p className="text-white text-sm font-bold capitalize">
-              {anime.kind}
+              {data.kind}
             </p>
           </div>
         </div>
@@ -49,7 +67,7 @@ function AnimeCard({ anime }: Prop) {
               className="object-contain"
             />
             <p className="text-base text-white font-bold">
-              {anime.episodes || anime.episodes_aired}
+              {data.episodes || data.episodes_aired}
             </p>
           </div>
           <div className="flex flex-row gap-2 items-center">
@@ -60,12 +78,12 @@ function AnimeCard({ anime }: Prop) {
               height={18}
               className="object-contain"
             />
-            <p className="text-base font-bold text-[#FFAD49]">{anime.score}</p>
+            <p className="text-base font-bold text-[#FFAD49]">{data.score}</p>
           </div>
         </div>
       </div>
-    </div>
+    </MotionDiv>
   );
-}
+};
 
 export default AnimeCard;

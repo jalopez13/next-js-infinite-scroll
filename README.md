@@ -1,9 +1,13 @@
-# Build Modern Next 14 Server Side App with Server Actions, Infinite Scroll & Framer Motion Animations
+# Next.js Infinite Scroll - Anime App
 
-![Anime Website](https://i.ibb.co/MG1nbqt/YT-Thumbnails-2.png)
+Build Modern Next 14 Server Side App with Server Actions, Infinite Scroll & Framer Motion Animations
 
-### [🌟 Become a top 1% Next.js 14 developer in only one course](https://jsmastery.pro/next14)
-### [🚀 Land your dream programming job in 6 months](https://jsmastery.pro/masterclass)
-### [📙 Free Three.js Cheatsheet](https://resource.jsmastery.pro/threejs-cheatsheet)
-### [🌐 Best Hosting for Your Websites](https://hostinger.com/javascript10)
+- [Next.js](https://nextjs.org)
+- [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
+- [Framer Motion](https://www.framer.com/motion/)
 
+# Usage
+
+- Clone https://github.com/jalopez13/next-js-infinite-scroll.git
+- Run yarn install
+- Run yarn dev
